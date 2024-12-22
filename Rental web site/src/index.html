@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental web site</title>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+    <header>
+        <!-- navagiation starts here -->
+        <nav class="flex items-center justify-between px-4 py-5 font-normal text-base lg:container">
+            <img class="w-30 h-10" src="assets/logo 1.png" alt="">
+            <ul class="hidden gap-6 justify-between lg:flex whitespace-nowrap lg:text-xl">
+                <li class="hover:text-red-400 cursor-pointer">Home</li>
+                <li class="hover:text-red-400 cursor-pointer">Rentals</li>
+                <li class="hover:text-red-400 cursor-pointer">Categories</li>
+                <li class="hover:text-red-400 cursor-pointer">About Us</li>
+                <li class="hover:text-red-400 cursor-pointer">Contact</li>
+                <li class="hover:text-red-400 cursor-pointer">Blog</li>
+            </ul>
+            <div class="flex gap-6 items-center lg:text-lg font-medium ">
+                <div class="text-red-500 whitespace-nowrap hidden md:flex items-center"><i class="fa-regular fa-user pr-2"></i><span>Sing in</span></div>
+                <button class="py-2 p-4 rounded-full whitespace-nowrap text-white bg-red-500 "><i class="fa-solid fa-plus pr-2"></i>Post Listing </button>
+                <div id="menu" onclick="onHandle()" class="md:hidden w-4"> <i class="fa-solid fa-bars"></i></div>
+            </div>
+            <!-- mobile nav -->
+            <div id="mobile-nav" class="fixed inset-0  z-10 bg-white hidden">
+                <div class="">
+                    <div class="flex items-center justify-between flex-1 gap-4 px-4 py-5 ">
+                        <div> 
+                            <img class="w-30 h-10 cursor" src="assets/logo 1.png" alt="">
+                        </div>
+                        <div class="flex gap-6 items-center lg:text-lg font-medium ">
+                            <button class="py-2 p-4 rounded-full whitespace-nowrap text-white bg-red-500 "><i class="fa-solid fa-plus pr-2"></i>Post Listing </button>
+                            <div id="menu" onclick="onHandle()" class="md:hidden w-4 "> <i class="fa-solid fa-xmark"></i></div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-200 ">
+                        <ul class="flex flex-col items-center text-justify gap-6 py-6  ">
+                            <li class="nav-hover">Home</li>
+                            <li class="nav-hover">Rentals</li>
+                            <li class="nav-hover">Categories</li>
+                            <li class="nav-hover">About Us</li>
+                            <li class="nav-hover">Contact</li>
+                            <li class="nav-hover">Blog</li>
+                            <div class="h-[1px] bg-slate-800 px-10"></div>
+                            <div class="text-red-500 whitespace-nowrap flex items-center cursor hover:font-extrabold hover:button hover:bg-red-500 hover:nav-hover"><i class="fa-regular fa-user pr-2"></i><span>Sing in</span></div>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- nav ends -->
+
+        
+        <div class="h-screen">
+
+            <div class="bg-no-repeat h-full flex items-center justify-center w-full">
+                <div id="banner" class="bg-mark-family bg-cover sm:bg-cover md:bg-mark-group  lg:bg-cover bg-no-repeat h-full w-full flex">
+                
+                    <div class="container flex flex-col items-center lg:justify-center py-36 md:py-10 lg:py-36 gap-8 text-center h-full">
+                        <h1 class="text-3xl font-extrabold w-60 md:w-fit lg:text-6xl"><span>Discover Your</span> <span class="text-red-500"> Perfect Rental</span></h1>
+                        <p class="lg:text-3xl" >Rent Cars, Houses, and Itmes in Just a <br class="md:hidden"> Few Clicks.</p>
+                        <div class="flex gap-4 lg:text-xl ">
+                            <button class="button bg-white  hover:banner-hover">Places</button>
+                            <button class="button bg-white hover:banner-hover">Rides</button>
+                            <button class="button bg-white hover:banner-hover">Things</button>
+                        </div>
+                        <div class="w-full flex flex-col gap-4 md:hidden px-20">
+                            <div class="relative">
+                                <input type="text" class="w-full button outline-none pl-12" placeholder="Search for cars, houses, and more..">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-5">
+                                  <i class="text-gray-400 fas fa-search"></i>
+                                </div>
+                            </div>
+                            <div class="relative hover:cursor-pointer">
+                                <input type="text" class="button w-full outline-none pl-12" placeholder="Select Location">
+                                <div class="absolute left-0 inset-y-0 flex items-center pl-5">
+                                    <i class="text-gray-400 fas fa-location-dot"></i>
+                                </div>
+                                <div class="absolute right-0 pr-5 flex items-center inset-y-0">
+                                    <i class="text-gray-400 fas fa-angle-down"></i>
+                                </div>
+                            </div>
+                            <button class="button bg-red-500 text-white font-semibold w-full"><i class="fas fa-search" ></i> Search Now</button>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="button bg-white flex gap-2 h-full">
+                                <div class="relative my-4">
+                                    <input type="text" class=" flex-1 w-full button outline-none pl-12" placeholder="Search for cars, houses">
+                                    <div class="absolute inset-y-0 left-0 flex items-center pl-5">
+                                      <i class="text-gray-400 fas fa-search"></i>
+                                    </div>
+                                </div>
+                                <span class="h-full w-[2px] bg-gray-200 py-0"></span>
+                                <div class="relative hover:cursor-pointer my-4">
+                                    <input type="text" class=" flex-1 button w-full outline-none pl-12" placeholder="Select Location">
+                                    <div class="absolute left-0 inset-y-0 flex items-center pl-5">
+                                        <i class="text-gray-400 fas fa-location-dot"></i>
+                                    </div>
+                                    <div class="absolute right-0 pr-5 flex items-center inset-y-0">
+                                        <i class="text-gray-400 fas fa-angle-down"></i>
+                                    </div>
+                                </div>
+                                <button class="button bg-red-500 text-white px-5 py-2 my-4"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
+                
+                
+                
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+        
+    </header>
+    <!-- main starts -->
+    <main class="my-14 md:my-24 container">
+
+        <div id="Categories" class="flex gap-6 flex-col items-center ">
+            <h1 class=" text-3xl font-bold lg:text-5xl">Browse From Top Categories</h1>
+            <div class="flex gap-2">
+                <div class="h-1 w-20 bg-red-500 rounded-full"></div>
+                <div class="h-1 w-8 bg-red-500 rounded-full"></div>
+            </div>
+            <div class="mt-8 lg:w-full">
+                <ul  class="w-96 flex flex-col gap-4   lg:justify-between lg:flex-row lg:whitespace-nowrap lg:w-full">
+                    <li class="flex justify-center items-center gap-6 md:gap-0 rounded-button bg-slate-50 cursor-pointer ">
+                        <i class="fas fa-thumbs-up  bg-red-100 rounded-full p-4 text-red-500"></i>
+                        <p class="flex-1 text-lg font-medium md:px-6 hover:text-red-400 ">Holiday Rentals</p>
+                    </li>
+                    <li class="flex justify-center items-center gap-6 md:gap-0 rounded-button bg-slate-50 cursor-pointer">
+                        <i class="fas fa-home  bg-green-100 rounded-full p-4 text-green-500"></i>
+                        <p class="flex-1 text-lg font-medium md:px-6 hover:text-green-400 ">Residental Spaces</p>
+                    </li>
+                    <li class="flex justify-center items-center gap-6 md:gap-0 rounded-button bg-slate-50 cursor-pointer">
+                        <i class="fas fa-compass  bg-purple-100 rounded-full p-4 text-purple-500"></i>
+                        <p class="flex-1 text-lg font-medium md:px-6 hover:text-purple-400">Event spaces</p>
+                    </li>
+                    <li class="flex justify-center items-center gap-6 md:gap-0 rounded-button bg-slate-50 cursor-pointer">
+                        <i class="fas fa-dollar-sign  bg-blue-100 rounded-full p-4 text-blue-500"></i>
+                        <p class="flex-1 text-lg font-medium md:px-6 hover:text-blue-400">Commercial Properties</p>
+                    </li>
+                    <li class="flex justify-center items-center gap-6 md:gap-0 rounded-button bg-slate-50 cursor-pointer">
+                        <i class="fas fa-ellipsis  bg-orange-100 rounded-full p-4 text-orange-500"></i>
+                        <p class="flex-1 text-lg font-medium  md:px-6 hover:text-orange-400">More...</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-14 md:mt-24">
+            <div class="flex flex-col items-center gap-6">
+                <h1 class=" text-3xl font-bold lg:text-5xl">Featured Listings</h1>
+                <div class="flex gap-2">
+                    <div class="h-1 w-20 bg-red-500 rounded-full"></div>
+                    <div class="h-1 w-8 bg-red-500 rounded-full"></div>
+                </div>
+            </div>
+            <ul class="flex gap-4  mt-8 justify-between ml-6 sm:ml-0">
+                <li class="banner-hover button px-5 text-sm md:text-base bg-slate-200 text-center whitespace-nowrap">All Items (5125)</li>
+                <li class="banner-hover button px-5 text-sm md:text-base bg-slate-200 text-center whitespace-nowrap">Residental Spaces(64)</li>
+                <li class="banner-hover button px-5 text-sm md:text-base bg-slate-200 text-center whitespace-nowrap">Sports Venues</li>
+                <li class="banner-hover button px-5 text-sm md:text-base bg-slate-200 text-center whitespace-nowrap">Meeting Space</li>
+                <li class="banner-hover button px-5 text-sm md:text-base bg-slate-200 text-center whitespace-nowrap">Vans & Buses</li>
+                <li class="banner-hover button px-5 text-sm md:text-base bg-slate-200 text-center whitespace-nowrap">Cara & SUVs</li>
+                <li class="banner-hover button px-5 text-sm md:text-base bg-slate-200 text-center whitespace-nowrap">Lorries & Industiral Vehicles</li>
+                <button class="rounded-full px-3 py-2 bg-slate-200"><i class="fas fa-angle-right"></i></button>
+            </ul>
+            <div class="mt-10 md:mt-20 flex flex-col items-center justify-center gap-8 lg:grid lg:grid-cols-2 xl:grid-cols-3 ">
+                <div id="features-card1" class="relative w-fit rounded-xl bg-gray-50 overflow-hidden border border-gray-100 ">
+                    <button class="rounded-full py-1 px-4 bg-green-600 text-white text-sm absolute right-5 translate-y-1/2">For Rent</button>
+                    <img src="assets/image 27.png" alt="">
+                    <div class="px-6 flex flex-col gap-10 my-10">
+                        <h3 class="text-base"><span class="text-red-500 text-xl">85,000 LKR</span> /Month</h3>
+                        <h2 class="text-2xl font-semibold">Luxury Villa in Rego Park</h2>
+                        <div class="flex gap-5  justify-between text-base ">
+                            <p>3 Bedrooms</p>
+                            <div class="w-px  bg-black "></div>
+                            <p>2 Bedrooms</p>
+                            <div class="w-px bg-black"></div>
+                            <p>2500 Square FT</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-slate-500 py-7 px-6" >
+                        <div class="flex gap-3 items-center">
+                            <img src="assets/Ellipse 38.png" alt="">
+                            <div >
+                                <h2 class="text-xl font-semibold">Anne Liza</h2>
+                                <p>Propery Seller</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-2 ">
+                            <i class="fas fa-heart text-2xl hover:text-red-500 text-red-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="features-card2" class=" relative w-fit rounded-xl bg-gray-50 overflow-hidden border border-gray-100">
+                    <button class="rounded-full py-1 px-4 bg-green-600 text-white text-sm absolute right-5 translate-y-1/2">For Rent</button>
+                    <img src="assets/image 26.png" alt="">
+                    <div class="px-6 flex flex-col gap-10 my-10">
+                        <h3 class="text-base"><span class="text-red-500 text-xl">85,000 LKR</span> /Month</h3>
+                        <h2 class="text-2xl font-semibold">Luxury Villa in Rego Park</h2>
+                        <div class="flex gap-5  justify-between  text-base ">
+                            <p>3 Bedrooms</p>
+                            <div class="w-px  bg-black "></div>
+                            <p>2 Bedrooms</p>
+                            <div class="w-px bg-black"></div>
+                            <p>2500 Square FT</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-slate-500 py-7 px-6" >
+                        <div class="flex gap-3 items-center">
+                            <img src="assets/Ellipse 38.png" alt="">
+                            <div >
+                                <h2 class="text-xl font-semibold">Anne Liza</h2>
+                                <p>Propery Seller</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-2 ">
+                            <i class="fas fa-heart text-2xl hover:text-red-500 text-red-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="features-card3" class="relative w-fit rounded-xl bg-gray-50 overflow-hidden border border-gray-100">
+                    <button class="rounded-full py-1 px-4 bg-green-600 text-white text-sm absolute right-5 translate-y-1/2">For Rent</button>
+                    <img src="assets/image 24.png" alt="">
+                    <div class="px-6 flex flex-col gap-10 my-10">
+                        <h3 class="text-base"><span class="text-red-500 text-xl">85,000 LKR</span> /Month</h3>
+                        <h2 class="text-2xl font-semibold">Luxury Villa in Rego Park</h2>
+                        <div class="flex gap-5  justify-between  text-base ">
+                            <p>3 Bedrooms</p>
+                            <div class="w-px  bg-black "></div>
+                            <p>2 Bedrooms</p>
+                            <div class="w-px bg-black"></div>
+                            <p>2500 Square FT</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-slate-500 py-7 px-6" >
+                        <div class="flex gap-3 items-center">
+                            <img src="assets/Ellipse 38.png" alt="">
+                            <div >
+                                <h2 class="text-xl font-semibold">Anne Liza</h2>
+                                <p>Propery Seller</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-2 ">
+                            <i class="fas fa-heart text-2xl hover:text-red-500 text-red-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="features-card4" class=" relative w-fit rounded-xl bg-gray-50 overflow-hidden border border-gray-100  hidden md:block">
+                    <button class="rounded-full py-1 px-4 bg-green-600 text-white text-sm absolute right-5 translate-y-1/2">For Rent</button>
+                    <img src="assets/image 27.png" alt="">
+                    <div class="px-6 flex flex-col gap-10 my-10">
+                        <h3 class="text-base"><span class="text-red-500 text-xl">85,000 LKR</span> /Month</h3>
+                        <h2 class="text-2xl font-semibold">Luxury Villa in Rego Park</h2>
+                        <div class="flex gap-5  justify-between  text-base ">
+                            <p>3 Bedrooms</p>
+                            <div class="w-px  bg-black "></div>
+                            <p>2 Bedrooms</p>
+                            <div class="w-px bg-black"></div>
+                            <p>2500 Square FT</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-slate-500 py-7 px-6" >
+                        <div class="flex gap-3 items-center">
+                            <img src="assets/Ellipse 38.png" alt="">
+                            <div >
+                                <h2 class="text-xl font-semibold">Anne Liza</h2>
+                                <p>Propery Seller</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-2 ">
+                            <i class="fas fa-heart text-2xl hover:text-red-500 text-red-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="features-card5" class=" relative w-fit rounded-xl bg-gray-50 overflow-hidden border border-gray-100 hidden md:block">
+                    <button class="rounded-full py-1 px-4 bg-green-600 text-white text-sm absolute right-5 translate-y-1/2">For Rent</button>
+                    <img src="assets/image 24.png" alt="">
+                    <div class="px-6 flex flex-col gap-10 my-10">
+                        <h3 class="text-base"><span class="text-red-500 text-xl">85,000 LKR</span> /Month</h3>
+                        <h2 class="text-2xl font-semibold">Luxury Villa in Rego Park</h2>
+                        <div class="flex gap-5  justify-between  text-base ">
+                            <p>3 Bedrooms</p>
+                            <div class="w-px  bg-black "></div>
+                            <p>2 Bedrooms</p>
+                            <div class="w-px bg-black"></div>
+                            <p>2500 Square FT</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-slate-500 py-7 px-6" >
+                        <div class="flex gap-3 items-center">
+                            <img src="assets/Ellipse 38.png" alt="">
+                            <div >
+                                <h2 class="text-xl font-semibold">Anne Liza</h2>
+                                <p>Propery Seller</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-2 ">
+                            <i class="fas fa-heart text-2xl hover:text-red-500 text-red-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="features-card6" class="relative w-fit rounded-xl bg-gray-50 overflow-hidden border border-gray-100 hidden md:block">
+                    <button class="rounded-full py-1 px-4 bg-green-600 text-white text-sm absolute right-5 translate-y-1/2">For Rent</button>
+                    <img src="assets/image 26.png" alt="">
+                    <div class="px-6 flex flex-col gap-10 my-10">
+                        <h3 class="text-base"><span class="text-red-500 text-xl">85,000 LKR</span> /Month</h3>
+                        <h2 class="text-2xl font-semibold">Luxury Villa in Rego Park</h2>
+                        <div class="flex gap-5  justify-between  text-base ">
+                            <p>3 Bedrooms</p>
+                            <div class="w-px  bg-black "></div>
+                            <p>2 Bedrooms</p>
+                            <div class="w-px bg-black"></div>
+                            <p>2500 Square FT</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border-t border-slate-500 py-7 px-6" >
+                        <div class="flex gap-3 items-center">
+                            <img src="assets/Ellipse 38.png" alt="">
+                            <div >
+                                <h2 class="text-xl font-semibold">Anne Liza</h2>
+                                <p>Propery Seller</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-2 ">
+                            <i class="fas fa-heart text-2xl hover:text-red-500 text-red-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-8 ">
+                <button class="banner-hover button bg-red-500 text-white">Load More</button>
+            </div>
+        </div>
+    </main>
+    <!-- second main -->
+    <main>
+        <div class="bg-gray-100 py-10">
+            <div class="container flex flex-col justify-center items-center lg:flex-row gap-3 mx-auto">
+                <h1 class="mb-6 text-center lg:text-start text-2xl lg:text-4xl font-semibold flex-1">Insights and Performance <br class=" lg:hidden"> Metrics</h1>
+                <div class="bg-gray-900  text-white w-fit py-12 px-20 lg:p-8 lg:py-14 whitespace-nowrap rounded-xl flex flex-col flex-1 justify-center items-center gap-3">
+                    <span class="text-4xl font-bold">5000+</span>
+                    <p class="text-base font-light">Total Listing in the system</p>
+                </div>
+                <div class="bg-gray-900  text-white w-fit py-12 px-20 lg:p-8 lg:py-14  whitespace-nowrap rounded-xl flex flex-col flex-1 justify-center items-center gap-3">
+                    <span class="text-4xl font-bold">1000+</span>
+                    <p class="text-base font-light">Total Listing in the system</p>
+                </div>
+                <div class="bg-gray-900  text-white w-fit py-12 px-20 lg:p-8 lg:py-14  whitespace-nowrap rounded-xl flex flex-col flex-1 justify-center items-center gap-3">
+                    <span class="text-4xl font-bold">300+</span>
+                    <p class="text-base font-light">Total Listing in the system</p>
+                </div>
+                
+                
+            </div>
+        </div>
+
+        <div id="Location" class="my-12 md:my-20 container">
+            
+            <div class="flex justify-center flex-col items-center gap-6">
+                <h1 class=" text-3xl font-bold lg:text-5xl">Featured Locations</h1>
+                <div class="flex gap-2">
+                    <div class="h-1 w-20 bg-red-500 rounded-full"></div>
+                    <div class="h-1 w-8 bg-red-500 rounded-full"></div>
+                </div>
+            </div>
+            <div id="images" class=" grid gap-8 grid-cols-1 lg:grid-cols-4 mt-8 lg:mt-16 place-items-center lg:place-items-start w-full" >
+                <div class="relative cursor-pointer lg:row-span-2 overflow-hidden rounded-xl w-fit h-[275px] lg:h-fit ">
+                    <img src="assets/Rectangle 2187.png"alt="" class="image-zoom ">
+                    <span class="image-text">Kandy</span>
+                </div>
+                
+                <div class="relative cursor-pointer overflow-hidden rounded-xl  w-fit lg:h-fit ">
+                    <img src="assets/Rectangle 2188.png"alt="" class="image-zoom ">
+                    <span class="image-text">Anuradhapura</span>
+                </div>               
+                <div class="relative cursor-pointer overflow-hidden rounded-xl">
+                    <img src="assets/Rectangle 2190.png"alt="" class="image-zoom">
+                    <span class="image-text">Badulla</span>
+                </div>
+                <div class="relative cursor-pointer lg:row-span-2 overflow-hidden rounded-xl w-fit h-[275px] lg:h-fit">
+                    <img src="assets/Rectangle 2192.png" alt=""  class="image-zoom">
+                    <span class="image-text">Colombo</span>
+                </div>
+                <div class="relative cursor-pointer overflow-hidden rounded-xl">
+                    <img src="assets/Rectangle 2193.png" alt="" class="image-zoom">
+                    <span class="image-text">Gampaha</span>
+                </div>
+                <div class="relative cursor-pointer overflow-hidden rounded-xl">
+                    <img src="assets/Rectangle 2191.png" alt="" class="image-zoom">
+                    <span class="image-text">Jaffna</span>
+                </div>
+
+              
+               
+               
+                
+               
+            </div>
+        </div>
+
+        <div id="articles" class=" px-8 lg:px-0 container">
+            <div class="flex justify-center flex-col items-center gap-6">
+                <h1 class=" text-3xl font-bold lg:text-5xl"> Important Articles</h1>
+                <div class="flex gap-2">
+                    <div class="h-1 w-20 bg-red-500 rounded-full"></div>
+                    <div class="h-1 w-8 bg-red-500 rounded-full"></div>
+                </div>
+            </div>    
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 my-8 ">
+
+                 <div class="flex flex-col gap-6 lg:col-span-3 lg:row-span-4  w-fit">
+                    <div class="w-full ">
+                        <img src="assets/i-parallax-11-1024x683.jpeg.png" alt="" class="w-full">
+                    </div>
+                    <div class="flex flex-col gap-4 py-2">
+                        <span class=" text-red-500 font-bold text-lg">May 4,2023</span>
+                        <h2 class="font-bold text-xl">Car Rental Hacks for a smooth Journey</h2>
+                        <p class="text-base font-normal text-gray-500">Learn insider tips for getting the best deals and making the most of your rental car experience.</p>
+                    </div>
+                </div>
+                 
+                 <div class="flex flex-col lg:flex-row gap-6 lg:col-span-2 ">
+                    <div class="w-full lg:w-1/3 ">
+                        <img src="assets/Link → i-parallax-15-1024x683.jpeg.png" alt="" class="w-full">
+                    </div>
+                    <div class="flex flex-col gap-4 lg:w-2/3">
+                        <span class=" lg:mt-0 text-red-500 font-bold text-base">May 4,2023</span>
+                        <h2 class="font-bold text-lg">Car Rental Hacks for a smooth Journey</h2>
+                        <p class="text-base font-normal text-gray-500 lg:hidden xl:block">Learn insider tips for getting the best deals and making the most of your rental car experience.</p>
+                    </div>
+                </div>
+
+                 <div class="flex flex-col lg:flex-row gap-6 lg:col-span-2 ">
+                    <div class="w-full lg:w-1/3 ">
+                        <img src="assets/Link → i-parallax-14-1024x683.jpeg.png" alt="" class="w-full">
+                    </div>
+                    <div class="flex flex-col gap-4 lg:w-2/3">
+                        <span class=" lg:mt-0 text-red-500 font-bold text-base"> April 25,2023</span>
+                        <h2 class="font-bold text-lg">Managing Your Rental Items: A Comprehensive Guide</h2>
+                        <p class="text-base font-normal text-gray-500 lg:hidden xl:block">Get valuable insights on effectively manage and maintain you rented items.</p>
+                    </div>
+                </div>
+                 <div class="flex flex-col lg:flex-row gap-6 lg:col-span-2 ">
+                    <div class="w-full lg:w-1/3 ">
+                        <img src="assets/Link → i-parallax-12-1024x683.jpeg.png" alt="" class="w-full">
+                    </div>
+                    <div class="flex flex-col gap-4 lg:w-2/3">
+                        <span class=" lg:mt-0 text-red-500 font-bold text-base">January 2,2023</span>
+                        <h2 class="font-bold text-lg">Navigation the Rental Market:Insights for New Renters</h2>
+                        <p class="text-base font-normal text-gray-500 lg:hidden xl:block">Explore key considerations and useful tips for individuals new to the rental market</p>
+                    </div>
+                </div>
+                 <div class="flex flex-col lg:flex-row gap-6 lg:col-span-2 ">
+                    <div class="w-full lg:w-1/3">
+                        <img src="assets/Link → i-parallax-13-1024x683.jpeg.png" alt="" class="w-full">
+                    </div>
+                    <div class="flex flex-col gap-4 lg:w-2/3">
+                        <span class=" lg:mt-0 text-red-500 font-bold text-base">April 7,2023</span>
+                        <h2 class="font-bold text-lg">Maximizing Returns: Strategies for Rental property Owners</h2>
+                        <p class="text-base font-normal text-gray-500 lg:hidden xl:block">Learn insider tips for getting the best deals and making the most of your rental car experience.</p>
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+    </main>
+
+    <!-- footer starts -->
+    <footer>
+        <div  class="bg-gray-50 py-20 px-3 mt-10">
+            <div class="container flex flex-col xl:flex-row justify-between gap-20">
+                 <div class="flex flex-col gap-6">
+                    <a href="#">   
+                        <img class="w-30 h-10" src="assets/logo 1.png" alt="">
+                    </a>
+                    <p  class="lg:w-96">India's first & largest platform desinged to create an online amketplace exclusively for RENT</p>
+                    <div class=" flex text-xs text-white gap-4">
+                        <i class="fa-brands fa-instagram foot-logo"></i>
+                        <i class="fa-brands fa-twitter foot-logo "></i>
+                        <i class="fa-brands fa-youtube foot-logo"></i>
+                        <i class="fa-brands fa-facebook foot-logo "></i>
+                        <i class="fa-brands fa-linkedin foot-logo"></i>
+                    </div>
+                 </div>
+                 <div class="grid grid-cols-1 lg:grid-cols-3 lg:w-full gap-6 ">
+                    <div>
+                        <h2 class="text-red-500 foot-header">Navigation</h2>
+                        <ul class="foot-ul">
+                            <li>Aobut Us</li>
+                            <li>Blog</li>
+                            <li>Terms of Use</li>
+                            <li>Privacy policy</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-red-500 foot-header whitespace-nowrap">Featured Location</h2>
+                        <ul class="foot-ul">
+                            <li>Kandy</li>
+                            <li>Anuradhapura</li>
+                            <li>Badulla</li>
+                            <li>Colombo</li>
+                            <li>Kaluthara</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-red-500 foot-header">Help</h2>
+                        <ul class="foot-ul">
+                            <li>FAQ</li>
+                            <li>Contact Us</li>
+                        </ul>
+                    </div> 
+                 </div>
+
+                 <div class="flex flex-col gap-6 w-72">
+                    <h2 class="text-lg text-red-500 font-bold">Subscribe to Our Newsletter</h2>
+                    <p class="text-sm font-light">Stay update with the latest Listings and renatl tips.</p>
+                    <input type="email" class="button outline-none border border-gray-500 focus:border-blue-500" placeholder="Email address">
+                    <button class="button banner-hover bg-red-500 text-white text-base">Subscribe</button>
+                 </div>
+
+            </div>
+
+        </div>
+        <div id="sub-footer " class="flex justify-center items-center py-6">
+            <p class="text-xs font-normal">&#169;Copyright 2024.Desinged and Developed by CHAITANYAKRISHNA.R</p>
+        </div>
+    </footer>
+
+
+   
+    <script src="scritp.js"></script>
+    <script src="https://kit.fontawesome.com/636ca38e08.js" crossorigin="anonymous"></script>
+</body>
+</html>
