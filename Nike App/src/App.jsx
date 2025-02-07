@@ -1,15 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { NaviBar,CustomerReviews, Hero} from './components'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
-    <div className='bg-stone-300'>
-      App
-    </div>
+    <main className='relative' >
+      <section className='xl:padding-l wide:padding-r padding-b'>
+        <Hero/>
+      </section>
+     
+    </main>
   )
 }
 
